@@ -1,0 +1,64 @@
+<div class="container">
+  <h4>Update</h4>
+    <div class="row" style="padding:5px">
+      <div class="form-group">
+        <span class="col-md-4">Task :</span>
+        <div class="col-md-4">
+          <input type="text" class="form-control" [(ngModel)] = "TaskItem.taskDescription" #taskname = "ngModel" required />
+        </div>
+        <div class="col-md-4" *ngIf="taskname.invalid">
+            <span style="color:red">Task Name is required.</span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding:5px">
+        <div class="form-group">
+          <span class="col-md-4">Priority :</span>
+          <div class="col-md-4">
+            <input type="range" class="form-control" [(ngModel)] = "TaskItem.priority" Min="0" Max="30" value="0" />
+          </div>
+        </div>
+    </div>
+    <div class="row" style="padding:5px">
+        <div class="form-group">
+            <span class="col-md-4">Parent Task:</span>
+            <div class="col-md-4">
+                <select class="form-control"  [(ngModel)]="TaskItem.parentId">
+                    <option class="form-control" [ngValue]="task.taskId" *ngFor="let task of Tasks" >
+                      {{task.TaskName}}
+                    </option>
+                  </select>
+            </div>
+          </div>
+    </div>
+    <div class="row" style="padding:5px">
+        <div class="form-group">
+          <span class="col-md-4">Start Date:</span>
+          <div class="col-md-4">
+            <input type="date" class="form-control" [(ngModel)] = "TaskItem.startDate" #taskstartdate="ngModel" required/>
+          </div>
+          <div class="col-md-4" *ngIf="taskstartdate.invalid">
+              <span style="color:red">Task Start Date is required.</span>
+          </div>
+        </div>
+    </div>
+    <div class="row" style="padding:5px">
+        <div class="form-group">
+          <span class="col-md-4">End Date:</span>
+          <div class="col-md-4">
+            <input type="date" class="form-control" [(ngModel)] = "TaskItem.endDate" #taskenddate="ngModel" required/>
+          </div>
+          <div class="col-md-4" *ngIf="taskenddate.invalid">
+              <span style="color:red">Task End Date is required.</span>
+          </div>
+        </div>
+    </div>
+    <div class="row" style="padding:5px">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+              <input type="button" class="btn btn-default" value="Update" [disabled]="taskname.invalid || taskstartdate.invalid || taskenddate.invalid" (click)="UpdateTask()" style="margin-right:10px">
+              <input type="button" class="btn btn-default" value="Reset" style="margin-left:10px" (click)="Reset()">
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row" style="padding:5px">
+    <div class="form-group">
+      <span class="col-md-4">Task :</span>
+      <div class="col-md-4">
+        <input type="text" class="form-control"  #taskname="ngModel" [(ngModel)] = "TaskItem.taskDescription" required/>
+      </div>
+      <div class="col-md-4" *ngIf="taskname.invalid">
+          <span style="color:red">Task Name is required.</span>
+        </div>
+    </div>
+  </div>
+  <div class="row" style="padding:5px">
+      <div class="form-group">
+        <span class="col-md-4">Priority :</span>
+        <div class="col-md-4">
+          <input type="range" class="form-control" [(ngModel)] = "TaskItem.priority" Min="0" Max="30" value="0" />
+        </div>
+      </div>
+  </div>
+  <div class="row" style="padding:5px">
+      <div class="form-group">
+        <span class="col-md-4">Parent Task:</span>
+        <div class="col-md-4">
+          <select class="form-control" [(ngModel)]="TaskItem.parentId">
+            <option [ngValue]="task.TaskId" *ngFor="let task of Tasks" >
+              {{task.taskName}}
+            </option>
+          </select>
+        </div>
+      </div>
+  </div>
+  <div class="row" style="padding:5px">
+      <div class="form-group">
+        <span class="col-md-4">Start Date:</span>
+        <div class="col-md-4">
+          <input type="date" class="form-control" #taskstartdate="ngModel" [(ngModel)] = "TaskItem.startDate" required />
+        </div>
+        <div class="col-md-4" *ngIf="taskstartdate.invalid">
+            <span style="color:red">Task Start Date is required.</span>
+        </div>
+      </div>
+  </div>
+  <div class="row" style="padding:5px">
+      <div class="form-group">
+        <span class="col-md-4">End Date:</span>
+        <div class="col-md-4">
+          <input type="date" class="form-control" #taskenddate="ngModel" [(ngModel)] = "TaskItem.endDate" required/>
+        </div>
+        <div class="col-md-4" *ngIf="taskenddate.invalid">
+            <span style="color:red">Task End Date is required.</span>
+        </div>
+      </div>
+  </div>
+  <div class="row" style="padding:5px">
+      <div class="form-group">
+          <div class="col-md-offset-2 col-md-4">
+            <input type="button" [disabled]="taskname.invalid || taskstartdate.invalid || taskenddate.invalid" class="btn btn-default" value="Add Task" style="margin-right:10px" (click)="AddTask()">
+            <input type="button" class="btn btn-default" value="Reset" style="margin-left:10px" (click)="Reset()">
+        </div>
+      </div>
+    </div>
+</div>

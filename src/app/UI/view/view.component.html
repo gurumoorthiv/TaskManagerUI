@@ -1,0 +1,64 @@
+
+<div class="container">
+&nbsp;
+&nbsp;
+&nbsp;
+<div class="row" style="padding:5px">
+  <div class="form-group">
+      <span class="col-md-1">Task :</span>
+      <div class="col-md-5">
+        <input type="text" class="form-control" [(ngModel)] = "nameSearch" />
+      </div>
+      <span class="col-md-1">Parent Task :</span>
+      <div class="col-md-5">
+          <input type="text" class="form-control" [(ngModel)] = "parentTaskSearch" />
+      </div>
+  </div>
+</div>
+<div class="row" style="padding:5px">
+    <div class="form-group">
+        <span class="col-md-1">Priority From:</span>
+        <div class="col-md-2">
+          <input type="text" class="form-control" [(ngModel)] = "priorityFromSearch" />
+        </div>
+        <span class="col-md-1">Priority To:</span>
+        <div class="col-md-2">
+            <input type="text" class="form-control" [(ngModel)] = "priorityToSearch" />
+        </div>
+        <span class="col-md-1">Start Date:</span>
+        <div class="col-md-2">
+          <input type="text" class="form-control" [(ngModel)] = "startDateSearch" />
+        </div>
+        <span class="col-md-1">End Date:</span>
+        <div class="col-md-2">
+            <input type="text" class="form-control" [(ngModel)] = "endDateSearch" />
+        </div>
+    </div>
+  </div>
+  <hr/>
+  &nbsp;
+  <div class="row" >
+  <table class="table" >
+    <thead>
+      <td>Task</td>
+      <td>Parent</td>
+      <td>Priority</td>
+      <td>Start Date</td>
+      <td>End Date</td>
+      <td></td>
+      <td></td>
+    </thead>
+    <tbody *ngFor="let task of Tasks | taskSearch : nameSearch:parentTaskSearch:priorityFromSearch:priorityToSearch:startDateSearch:endDateSearch">
+      <tr *ngIf="task">
+        <td>{{ task.taskDescription }}</td>
+        <td>{{ task.parentId }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.startDate }}</td>
+        <td>{{ task.endDate }} </td>
+        <td><input type="button" class="btn btn-default" value="Edit" [disabled]="DisableButton(task.EndTask)" routerLink="/update/{{task.taskId}}"></td>
+        <td><input type="button" class="btn btn-default" value="End Task" (click)="EndTask(task.taskId)"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
