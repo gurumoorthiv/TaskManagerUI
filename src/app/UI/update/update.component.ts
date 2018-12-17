@@ -41,7 +41,7 @@ export class UpdateComponent implements OnInit {
   Reset() {
     this.TaskItem.taskName = '';
     this.TaskItem.priority = 0;
-    this.TaskItem.parentId = '';
+    this.TaskItem.parentTaskModel =new TaskModel();
     this.TaskItem.startDate = '';
     this.TaskItem.endDate = '';
   }

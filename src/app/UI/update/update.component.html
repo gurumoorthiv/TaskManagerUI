@@ -23,9 +23,9 @@
         <div class="form-group">
             <span class="col-md-4">Parent Task:</span>
             <div class="col-md-4">
-                <select class="form-control"  [(ngModel)]="TaskItem.parentId">
+                <select class="form-control"  [(ngModel)]="TaskItem.taskId">
                     <option class="form-control" [ngValue]="task.taskId" *ngFor="let task of Tasks" >
-                      {{task.TaskName}}
+                      {{task.taskDescription}}
                     </option>
                   </select>
             </div>

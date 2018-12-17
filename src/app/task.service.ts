@@ -33,13 +33,13 @@ export class TaskService {
   }
 
   GetTaskById(taskId: Number) {
-    return this.http.get('http://localhost/TaskManager/Task/GetTaskById?taskId=' + taskId);
+    return this.http.get('http://localhost/TaskManager/Task/GetTaskById/' + taskId);
   }
 
   EndTask(taskId: Number)  {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     // tslint:disable-next-line:max-line-length
-    return this.http.delete('http://localhost/TaskManager/Task/DeleteTaskById?taskId=' + taskId, httpOptions).subscribe(response => console.log(response),err => console.log(err));
+    return this.http.delete('http://localhost/TaskManager/Task/DeleteTaskById/' + taskId, httpOptions).subscribe(response => console.log(response),err => console.log(err));
   }
 }
 

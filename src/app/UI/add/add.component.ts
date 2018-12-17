@@ -20,11 +20,16 @@ export class AddComponent implements OnInit {
     this.service.GetAllTasks()
                   .subscribe(data => {
                     // tslint:disable-next-line:no-unused-expression
-                    this.Tasks = data, err => console.log(err);
+
+                 
+                    this.Tasks = data; 
+                    console.log(this.Tasks ),
+                    err => console.log(err);
                   });
   }
 
   AddTask() {
+    console.log(this.TaskItem ),
     this.service.AddTask(this.TaskItem);
   }
 
